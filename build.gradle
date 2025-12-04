@@ -1,0 +1,79 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.gradle.userdev' version '7.0.+'
+}
+
+version = '1.0.0'
+group = 'com.mcgrappin'
+
+base {
+    archivesName = 'mcgrappin'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+runs {
+    configureEach {
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.console.level', 'debug'
+        modSource project.sourceSets.main
+    }
+
+    client {
+        systemProperty 'forge.enabledGameTestNamespaces', 'mcgrappin'
+    }
+
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', 'mcgrappin'
+        programArgument '--nogui'
+    }
+
+    data {
+        programArguments.addAll '--mod', 'mcgrappin', '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'net.neoforged:neoforge:21.1.+'
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version   : '1.21.1',
+            minecraft_version_range: '[1.21.1,1.22)',
+            neo_version         : '21.1',
+            neo_version_range   : '[21.1,)',
+            loader_version_range: '[4,)',
+            mod_id              : 'mcgrappin',
+            mod_name            : 'MCGrappin',
+            mod_license         : 'MIT',
+            mod_version         : project.version,
+            mod_authors         : 'MCGrappin Team',
+            mod_description     : 'A grappling hook mod for Minecraft'
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}

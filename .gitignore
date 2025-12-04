@@ -1,0 +1,37 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Minecraft Forge/NeoForge
+run/
+runs/
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Environment
+.env
+.env.*
+
+# Specify artifacts (keep specs but ignore generated)
+.specify/cache/

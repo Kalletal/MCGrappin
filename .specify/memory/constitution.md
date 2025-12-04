@@ -1,50 +1,55 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# MCGrappin Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Gameplay-First
+Le grappin doit offrir une expérience de jeu fluide et satisfaisante. La mécanique doit être intuitive, réactive et s'intégrer naturellement dans l'univers Minecraft. Le plaisir du joueur prime sur la complexité technique.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Vanilla-Compatible
+Le mod doit respecter l'esthétique et les conventions de Minecraft vanilla. Les textures, sons et animations doivent s'harmoniser avec le style existant. Aucune dépendance externe autre que le mod loader choisi (Forge/Fabric).
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Performance
+Le grappin ne doit pas impacter négativement les performances du jeu. Les calculs de physique et de collision doivent être optimisés. Pas de lag côté client ni serveur, même en multijoueur.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Configurabilité
+Les paramètres clés doivent être configurables : portée du grappin, vitesse de traction, durabilité, crafting recipe. Fichier de configuration accessible pour les joueurs et administrateurs de serveur.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Multijoueur-Ready
+Le mod doit fonctionner correctement en solo et en multijoueur. Synchronisation client-serveur robuste. Pas de désync ni d'exploits possibles.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Spécifications Techniques
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Mod Loader
+- Support Forge
+- Version Minecraft cible : 1.21.1
+- Java 17+ requis pour les versions modernes
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Fonctionnalités du Grappin
+- Lancer vers une surface solide
+- Traction du joueur vers le point d'ancrage
+- Physique de balancement réaliste
+- Durabilité et réparation
+- Recipe de craft équilibré
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Structure du Code
+- Séparation claire client/serveur
+- Packets réseau pour la synchronisation
+- Modèle de données propre pour l'item
+
+## Qualité
+
+### Tests
+- Tests unitaires pour la logique métier
+- Tests en jeu manuels pour le gameplay
+- Validation multijoueur avant release
+
+### Documentation
+- README avec instructions d'installation
+- Guide d'utilisation pour les joueurs
+- Changelog maintenu à jour
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Cette constitution guide toutes les décisions de développement. Les modifications doivent être justifiées par une amélioration du gameplay ou de la qualité technique.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-01 | **Last Amended**: 2025-12-01
